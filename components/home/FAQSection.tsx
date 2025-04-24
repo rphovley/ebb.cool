@@ -39,7 +39,7 @@ export function FAQSection() {
         <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-500/10 rounded-full filter blur-2xl opacity-75"></div>
         <div className="absolute top-[15%] left-[15%] w-64 h-64 bg-violet-400/10 rounded-full filter blur-2xl opacity-75"></div>
       </div>
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 max-w-[1140px] mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Questions?</h2>

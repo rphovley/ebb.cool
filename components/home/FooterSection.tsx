@@ -5,7 +5,7 @@ import { Twitter, Instagram, CheckCircle } from 'lucide-react'
 export function FooterSection() {
   return (
     <footer className="w-full py-12 px-4 md:px-6 border-t">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 max-w-[1140px]">
         <div className="col-span-1 md:col-span-2 space-y-4">
           <Logo width={100} />
           <p className="text-sm text-muted-foreground max-w-xs">
@@ -37,7 +37,7 @@ export function FooterSection() {
         </div>
       </div>
 
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground border-t pt-8 gap-4">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-xs text-muted-foreground border-t pt-8 gap-4 max-w-[1140px]">
          <div className="flex items-center gap-2">
            <CheckCircle className="h-4 w-4 text-green-500" />
            <span>All services are online</span>

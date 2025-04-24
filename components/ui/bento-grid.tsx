@@ -12,8 +12,8 @@ interface BentoGridProps extends ComponentPropsWithoutRef<"div"> {
 interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   name: string;
   className: string;
-  Icon: React.ElementType;
   description: string;
+  children?: ReactNode;
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
@@ -33,8 +33,8 @@ const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
 const BentoCard = ({
   name,
   className,
-  Icon,
   description,
+  children,
   ...props
 }: BentoCardProps) => (
   <div
@@ -46,8 +46,8 @@ const BentoCard = ({
     )}
     {...props}
   >
+    {children}
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
-      <Icon className="h-12 w-12 origin-left transform-gpu text-foreground/80 transition-all duration-300 ease-in-out group-hover:scale-75" />
       <h3 className="text-xl font-semibold text-card-foreground">
         {name}
       </h3>
