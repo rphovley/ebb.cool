@@ -14,6 +14,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   className: string;
   description: string;
   children?: ReactNode;
+  backgroundComponent?: ReactNode;
 }
 
 const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
@@ -35,23 +36,26 @@ const BentoCard = ({
   className,
   description,
   children,
+  backgroundComponent,
   ...props
 }: BentoCardProps) => (
   <div
     key={name}
     className={cn(
-      "group relative flex flex-col justify-end overflow-hidden rounded-xl",
-      "border bg-card/20 backdrop-blur-lg shadow-sm",
+      "group relative flex flex-col justify-end overflow-hidden rounded-xl h-full",
+      "border bg-card/20 shadow-sm",
       className,
     )}
     {...props}
   >
     {children}
-    <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300">
-      <h3 className="text-xl font-semibold text-card-foreground">
-        {name}
-      </h3>
-      <p className="max-w-lg text-muted-foreground">{description}</p>
+    <div className="z-10 m-2 rounded-lg bg-[--background]/75 p-4 backdrop-blur-lg">
+      <div className="pointer-events-none flex transform-gpu flex-col gap-1 transition-all duration-300">
+        <h3 className="text-xl font-semibold text-card-foreground">
+          {name}
+        </h3>
+        <p className="max-w-lg text-muted-foreground">{description}</p>
+      </div>
     </div>
   </div>
 );

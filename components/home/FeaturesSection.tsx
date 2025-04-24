@@ -1,8 +1,11 @@
 import React from 'react'
 import { Clock, UserPlus, Ban, Music, Users, ShieldCheck } from 'lucide-react'
 import { BentoGrid, BentoCard } from "@/components/ui/bento-grid"
-import { MusicIntegrationBeam } from './MusicIntegrationBeam'
-import { TrackTimeBackground } from './TrackTimeBackground'
+import { MusicIntegrationBeam } from '../backgrounds/MusicIntegrationBeam'
+import { TrackTimeBackground } from '../backgrounds/TrackTimeBackground'
+import { FocusProfilesBackground } from '../backgrounds/FocusProfilesBackground'
+import { BlockAppBackground } from '../backgrounds/BlockAppBackground'
+import { FriendsGlobeBackground } from '../backgrounds/FriendsGlobeBackground'
 
 // Define the type for a feature including the optional background component
 interface Feature {
@@ -17,39 +20,42 @@ const features: Feature[] = [
     // Icon: Clock,
     name: "Track Time",
     description: "Understand where your time goes automatically.",
-    className: "col-span-1 row-span-1", // Top-left
+    className: "col-span-1 row-span-3", // Bottom-left (rows 1-3 / span 2)
     backgroundComponent: <TrackTimeBackground />,
   },
   {
     // Icon: Ban,
     name: "Block Apps/Websites",
     description: "Block distractions to stay in the zone.",
-    className: "col-span-1 row-span-2", // Middle column (tall)
+    className: "col-span-1 row-span-4", // Top-left (rows 3-6 / span 3)
+    backgroundComponent: <BlockAppBackground />,
   },
   {
     // Icon: Users,
     name: "Integrate Your Music",
     description: "Sync with Spotify and Apple Music.",
-    className: "col-span-1 row-span-1", // Mid-right
+    className: "col-span-1 row-span-2", // Top-right (rows 4-6 / span 2)
     backgroundComponent: <MusicIntegrationBeam className="absolute top-0 left-0 right-0 h-2/3 w-full px-8" />,
-  },
-  {
-    // Icon: UserPlus,
-    name: "Add Focus Profiles",
-    description: "Create custom profiles for different types of work.",
-    className: "col-span-1 row-span-2", // Bottom-left (tall)
   },
   {
     // Icon: Music,
     name: "Compete with Friends",
     description: "Stay motivated by competing with friends (soon).",
-    className: "col-span-1 row-span-1", // Mid-right
+    className: "col-span-1 row-span-2", // Mid-right (rows 3-4 / span 1)
+    backgroundComponent: <FriendsGlobeBackground />,
+  },
+  {
+    // Icon: UserPlus,
+    name: "Add Focus Profiles",
+    description: "Create custom profiles for different types of work.",
+    className: "col-span-1 row-span-3", // Middle tall (rows 2-6 / span 4)
+    backgroundComponent: <FocusProfilesBackground />,
   },
   {
     // Icon: ShieldCheck, // Combining Lock, Zap, Database conceptually
     name: "Private, Secure & Lightweight",
     description: "Local first, open source, and built for performance.",
-    className: "col-span-2 row-span-1", // Bottom-wide
+    className: "col-span-2 row-span-2", // Bottom-wide (rows 1-2 / span 1)
   },
 ];
 
@@ -74,7 +80,7 @@ export function FeaturesSection() {
             </p>
           </div>
         </div>
-         <BentoGrid className="max-w-5xl mx-auto grid-cols-3 auto-rows-[16rem]">
+         <BentoGrid className="max-w-5xl mx-auto grid-cols-3 grid-rows-[repeat(6,8rem)]">
           {features.map((feature) => (
             <BentoCard key={feature.name} {...feature}>
               {/* Render the background component if it exists */}
