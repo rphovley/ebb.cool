@@ -12,10 +12,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-// TODO: Define appropriate metadata for the root layout
 export const metadata: Metadata = {
-  title: "Ebb", // Example title
-  description: "Focus never felt so good.", // Example description
+  title: "Ebb",
+  description: "Focus app for macOS",
 }
 
 export default function RootLayout({
