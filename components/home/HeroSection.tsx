@@ -20,7 +20,7 @@ export function HeroSection() {
         amplitude={1}
         speed={0.8}
       />
-      <div className="relative z-10 flex flex-col items-center max-w-[1140px] mx-auto px-4 md:px-6">
+      <div className="relative z-10 flex flex-col items-center max-w-[1140px] mx-auto px-4 md:px-6 pt-20">
         <Dialog>
           <div className="relative group mb-8 w-fit">
             <Image 

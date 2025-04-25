@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
 import { Badge } from "@/components/ui/badge"
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy - Ebb',
+  description: 'Understand how Ebb handles your data in our Privacy Policy.',
+}
 
 export default function PrivacyPolicyPage() {
   return (

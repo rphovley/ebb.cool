@@ -1,4 +1,10 @@
+import { Metadata } from 'next'
 import { Badge } from "@/components/ui/badge"
+
+export const metadata: Metadata = {
+  title: 'Terms of Use - Ebb',
+  description: 'Read the Terms of Use for the Ebb macOS application.',
+}
 
 export default function TermsOfServicePage() {
   return (
