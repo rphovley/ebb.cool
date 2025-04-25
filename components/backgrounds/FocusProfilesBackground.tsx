@@ -19,8 +19,8 @@ const profilesData = {
   Coding: {
     blocked: [
       { name: 'github.com', Icon: Github },
-      { name: 'vercel.com', Icon: Monitor }, // Using Monitor as placeholder
-      { name: 'Cursor', Icon: Text }, // Using Text as placeholder for Cursor icon
+      { name: 'vercel.com', Icon: Monitor },
+      { name: 'Cursor', Icon: Text },
     ],
     color: 'bg-violet-600',
     playlistName: 'Hans Zimmer Soundtracks',
@@ -29,7 +29,7 @@ const profilesData = {
 }
 
 export function FocusProfilesBackground() {
-  const [activeProfile, setActiveProfile] = useState<Profile>('Coding')
+  const [activeProfile, setActiveProfile] = useState<Profile>('Studying')
 
   const currentProfileData = profilesData[activeProfile]
 
