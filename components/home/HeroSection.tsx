@@ -12,7 +12,7 @@ import { APPLE_SILICON_DOWNLOAD_URL, INTEL_DOWNLOAD_URL } from "@/lib/downloadUt
 
 export function HeroSection() {
   return (
-     <section className="relative w-full text-center flex flex-col items-center justify-center h-[calc(100vh-8rem)] overflow-hidden">
+     <section className="relative w-full text-center flex flex-col items-center justify-center min-h-screen md:min-h-[calc(100vh-8rem)] overflow-hidden">
       <Aurora
         className="absolute top-0 left-0 w-full h-full z-0 opacity-30 dark:opacity-50"
         colorStops={["#7c3aed", "#4c1d95", "#7c3aed"]}
