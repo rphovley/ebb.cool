@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Inter, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { PostHogProvider } from "./providers"
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <PostHogProvider>
+          {children}
+        </PostHogProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
