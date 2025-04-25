@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-
-import { FeaturesSection } from "@/components/home/FeaturesSection"
+import { FeaturesSectionLoader } from "@/components/home/FeaturesSectionLoader"
 import { TestimonialsSection } from "@/components/home/TestimonialsSection"
 import { PricingSection } from "@/components/home/PricingSection"
 import { FAQSection } from "@/components/home/FAQSection"
@@ -16,7 +15,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center overflow-x-hidden">
       <HeroSection />
-      <FeaturesSection />
+      <FeaturesSectionLoader />
       <TestimonialsSection />
       <PricingSection />
       <FAQSection />

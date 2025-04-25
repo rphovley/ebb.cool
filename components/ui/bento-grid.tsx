@@ -51,9 +51,9 @@ const BentoCard = ({
     {children}
     <div className="z-10 m-2 rounded-lg bg-[--background]/75 p-4 backdrop-blur-lg">
       <div className="pointer-events-none flex transform-gpu flex-col gap-1 transition-all duration-300">
-        <h3 className="text-xl font-semibold text-card-foreground">
+        <h2 className="text-xl font-semibold text-card-foreground">
           {name}
-        </h3>
+        </h2>
         <p className="max-w-lg text-muted-foreground">{description}</p>
       </div>
     </div>
