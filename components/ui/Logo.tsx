@@ -12,7 +12,7 @@ export function Logo({ className = '', width = 24, height = 24 }: LogoProps) {
   const viewBoxHeight = 61
 
   return (
-    <Link href="/" className={className}>
+    <Link href="/" className={className} aria-label="Homepage">
       <svg 
         width={width} 
         height={height}

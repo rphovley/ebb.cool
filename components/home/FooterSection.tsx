@@ -15,7 +15,7 @@ export function FooterSection() {
           </p>
           <div className="flex items-center space-x-4 mt-8">
              <Link href="https://x.com/codeclimbersio" className="text-muted-foreground hover:text-foreground text-xl font-bold">𝕏</Link>
-             <Link href="https://discord.gg/qhST6C5XxV" className="text-muted-foreground hover:text-foreground"><DiscordIcon className="h-5 w-5" /></Link>
+             <Link href="https://discord.gg/qhST6C5XxV" className="text-muted-foreground hover:text-foreground" aria-label="Join Discord"><DiscordIcon className="h-5 w-5" /></Link>
            </div>
         </div>
 

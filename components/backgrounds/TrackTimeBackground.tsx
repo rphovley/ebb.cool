@@ -1,6 +1,11 @@
 import React from 'react'
 import { Marquee } from '@/components/ui/marquee'
-import { Code, Twitter, Instagram, Smartphone, MessageSquare, Shapes } from 'lucide-react'
+import { CursorIcon } from '../icons/CursorIcon'
+import { InstagramIcon } from '../icons/InstagramIcon'
+import { FigmaIcon } from '../icons/FigmaIcon'
+import { XIcon } from '../icons/XIcon'
+import { MessagesIcon } from '../icons/MessagesIcon'
+import { DiscordIcon } from '../icons/DiscordIcon'
 
 // Simplify Rating type
 type Rating = 'Creating' | 'Consuming'
@@ -20,12 +25,12 @@ const ratingConfig: Record<Rating, { textColor: string; progressColor: string }>
 }
 
 const apps: TrackedApp[] = [
-  { name: 'Cursor', rating: 'Creating', time: '2h 25m', progress: 45, Icon: Code },
-  { name: 'instagram.com', rating: 'Consuming', time: '1h 15m', progress: 35, Icon: Instagram },
-  { name: 'Figma', rating: 'Creating', time: '1h 05m', progress: 30, Icon: Shapes },
-  { name: 'x.com', rating: 'Consuming', time: '0h 48m', progress: 25, Icon: Twitter },
-  { name: 'Messages', rating: 'Consuming', time: '0h 30m', progress: 15, Icon: Smartphone },
-  { name: 'Discord', rating: 'Consuming', time: '0h 55m', progress: 28, Icon: MessageSquare }
+  { name: 'Cursor', rating: 'Creating', time: '2h 25m', progress: 45, Icon: CursorIcon },
+  { name: 'instagram.com', rating: 'Consuming', time: '1h 15m', progress: 35, Icon: InstagramIcon },
+  { name: 'Figma', rating: 'Creating', time: '1h 05m', progress: 30, Icon: FigmaIcon },
+  { name: 'x.com', rating: 'Consuming', time: '0h 48m', progress: 25, Icon: XIcon },
+  { name: 'Messages', rating: 'Consuming', time: '0h 30m', progress: 15, Icon: MessagesIcon },
+  { name: 'Discord', rating: 'Consuming', time: '0h 55m', progress: 28, Icon: DiscordIcon }
 ]
 
 export function TrackTimeBackground() {
@@ -49,7 +54,11 @@ export function TrackTimeBackground() {
              >
                <div className="flex items-center space-x-3 overflow-hidden">
                  <div className="p-2 bg-gray-700 rounded-md flex-shrink-0">
-                   <app.Icon className="w-5 h-5 text-white" />
+                   {app.name === 'Discord' ? (
+                     <app.Icon className="w-5 h-5" fill="#5765F2" />
+                   ) : (
+                     <app.Icon className="w-5 h-5 text-white" />
+                   )}
                  </div>
                  <div className="overflow-hidden">
                    <p className="text-sm font-medium text-white truncate">{app.name}</p>

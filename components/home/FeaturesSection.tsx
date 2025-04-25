@@ -54,18 +54,9 @@ const features: Feature[] = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="relative w-full pt-4 pb-12 md:pb-16 lg:pb-20">
-      <div className="absolute inset-0 -z-10">
-        <div 
-          className="absolute 
-                     top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                     w-[800px] h-[600px] 
-                     bg-violet-600/10 
-                     rounded-full filter blur-2xl opacity-75"
-        ></div>
-      </div>
-      <div className="container px-4 md:px-6 max-w-[1140px] mx-auto">
-         <BentoGrid className="max-w-5xl mx-auto grid-cols-1 md:grid-cols-3 md:grid-rows-[repeat(6,7rem)] auto-rows-auto gap-4">
+    <section id="features" className="w-full pt-10 md:pt-16 pb-20 md:pb-32 px-4 md:px-6">
+      <div className="container mx-auto max-w-[1140px]">
+        <BentoGrid className="max-w-5xl mx-auto grid-cols-1 md:grid-cols-3 md:grid-rows-[repeat(6,7rem)] auto-rows-auto gap-4">
           {features.map((feature) => (
             <BentoCard key={feature.name} {...feature}>
               <div className="hidden md:block">

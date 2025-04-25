@@ -13,18 +13,16 @@ import { APPLE_SILICON_DOWNLOAD_URL, INTEL_DOWNLOAD_URL } from "@/lib/downloadUt
 export function HeroSection() {
   return (
      <section className="relative w-full text-center flex flex-col items-center justify-center h-[calc(100vh-8rem)] overflow-hidden">
-       {/* Aurora Background */}
       <Aurora
         className="absolute top-0 left-0 w-full h-full z-0 opacity-30 dark:opacity-50"
-        colorStops={["#7c3aed", "#4c1d95", "#7c3aed"]} // Derived from dark theme primary, chart-4, destructive
+        colorStops={["#7c3aed", "#4c1d95", "#7c3aed"]}
         blend={0.5}
-        amplitude={1} // Adjust amplitude for subtlety
-        speed={0.8} // Adjust speed
+        amplitude={1}
+        speed={0.8}
       />
-      {/* Hero Content */}
       <div className="relative z-10 flex flex-col items-center max-w-[1140px] mx-auto px-4 md:px-6">
         <Dialog>
-          <div className="relative group mb-8 cursor-pointer w-fit">
+          <div className="relative group mb-8 w-fit">
             <Image 
               src="/images/ebb-app.png" 
               alt="Ebb App Icon" 
@@ -33,9 +31,9 @@ export function HeroSection() {
               className="transition-all duration-300 ease-in-out group-hover:brightness-75" // Dim image slightly on hover
             />
             <DialogTrigger asChild>
-              <div className="absolute inset-0 flex items-center justify-center bg-background/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl">
+              <button className="absolute inset-0 flex items-center justify-center bg-background/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl cursor-pointer">
                 <Play className="h-12 w-12 text-white" fill="white" />
-              </div>
+              </button>
             </DialogTrigger>
             <span className="absolute top-[-0.5rem] right-[-1rem] z-10 inline-flex flex-col text-xs font-medium text-yellow-400">
               <span className="self-end translate-x-2">video inside</span>
