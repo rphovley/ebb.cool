@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { Download, Twitter, Instagram } from 'lucide-react' // Assuming lucide-react is installed
-import { Logo } from '@/components/ui/Logo' // Updated import
+import { Download, Twitter, Instagram } from 'lucide-react'
+import { Logo } from '@/components/ui/Logo'
 
-// Header Component
 export function Header() {
   const navItems = [
-    { label: "How It Works", href: "#how-it-works" },
     { label: "Features", href: "#features" },
-    { label: "1-Star Reviews", href: "#testimonials" }, // Maps to Testimonials section
+    { label: "1-Star Reviews", href: "#testimonials" },
     { label: "Pricing", href: "#pricing" },
   ]
 
