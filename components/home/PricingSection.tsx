@@ -1,7 +1,12 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Check, KeyRound, BadgeCheck } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 
 const freeFeatures = [
   "Screen time analytics",
@@ -29,6 +34,12 @@ const proAvatars: string[] = [
 ]
 
 export function PricingSection() {
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
+
+  useEffect(() => {
+    setDownloadUrl(getDownloadLink())
+  }, [])
+
   return (
     <section id="pricing" className="relative w-full py-12 md:py-16 lg:py-20">
       <div className="absolute inset-0 -z-10">
@@ -36,7 +47,7 @@ export function PricingSection() {
         <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-violet-500/10 rounded-full filter blur-2xl opacity-75"></div>
         <div className="absolute top-1/3 right-[15%] w-72 h-72 bg-violet-600/10 rounded-full filter blur-2xl opacity-75"></div>
       </div>
-      <div className="container px-4 md:px-6 max-w-[1000px] mx-auto">
+      <div className="container px-4 md:px-6 max-w-[1080px] mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Try for free</h2>
@@ -61,7 +72,9 @@ export function PricingSection() {
                  <span className="text-xl text-muted-foreground">forever</span>
                </div>
                <CardDescription className="mt-1">Analytics, blocking, and music</CardDescription> {/* Moved here, added mt-1 */}
-               <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-6">Download Free</Button>
+               <Link href={downloadUrl}>
+                 <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-6">Download Free</Button>
+               </Link>
              </CardHeader>
              <CardContent className="flex flex-col items-start space-y-4 pt-2"> {/* Removed social proof placeholder, adjusted spacing/pt */}
                 {/* Removed Social Proof Placeholder */}
@@ -97,7 +110,9 @@ export function PricingSection() {
                    <span className="text-xl text-muted-foreground">one-time</span>
                 </div>
                  <CardDescription className="mt-1">Your copy forever & one year of updates</CardDescription> {/* Moved here, added mt-1 */}
-                 <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-6">Get Started</Button>
+                 <Link href={downloadUrl}>
+                   <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-6">Get Started</Button>
+                 </Link>
               </CardHeader>
               <CardContent className="flex flex-col items-start space-y-6 pt-2">
                 {/* Feature List - Moved up */}

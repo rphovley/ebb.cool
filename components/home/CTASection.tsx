@@ -1,7 +1,18 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { EbbIcon } from "../icons/EbbIcon"
+import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 
 export function CTASection() {
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
+
+  useEffect(() => {
+    setDownloadUrl(getDownloadLink())
+  }, [])
+
   return (
     <section id="cta" className="relative w-full border-t">
       <div className="absolute inset-0 -z-10">
@@ -19,7 +30,9 @@ export function CTASection() {
             </p>
           </div>
           <div className="space-x-4">
-            <Button size="lg">Download Now</Button>
+            <Link href={downloadUrl}>
+              <Button size="lg">Download Free</Button>
+            </Link>
           </div>
         </div>
       </div>

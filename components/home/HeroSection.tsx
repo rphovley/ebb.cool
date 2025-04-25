@@ -2,11 +2,13 @@ import { Button } from "@/components/ui/button"
 import Aurora from "@/components/backgrounds/aurora"
 import { AppleIcon } from "@/components/icons/AppleIcon"
 import Image from "next/image"
+import Link from 'next/link'
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Play } from "lucide-react"
 import { DialogClose, DialogTitle } from "@/components/ui/dialog"
 import { XIcon } from "lucide-react"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
+import { APPLE_SILICON_DOWNLOAD_URL, INTEL_DOWNLOAD_URL } from "@/lib/downloadUtils"
 
 export function HeroSection() {
   return (
@@ -40,18 +42,18 @@ export function HeroSection() {
               <span className="text-sm">↙</span>
             </span>
           </div>
-          <DialogContent className="sm:max-w-[650px] p-0">
+          <DialogContent className="sm:max-w-[850px] p-0">
              <VisuallyHidden>
                <DialogTitle>Ebb App Demo Video</DialogTitle>
              </VisuallyHidden>
              <iframe 
-               className="w-full aspect-video rounded-lg" 
-               src="https://www.youtube.com/embed/wJ7A6_dLnXI?autoplay=1"
+               className="w-full aspect-[3456/2234] rounded-lg" 
+               src="https://www.youtube.com/embed/a3YmaPWTCVU?autoplay=1&rel=0"
                title="YouTube video player" 
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                allowFullScreen
              ></iframe>
-             <DialogClose className="absolute top-[-0.75rem] right-[-0.75rem] z-50 rounded-full bg-muted p-1.5 opacity-80 hover:opacity-100 transition-opacity">
+             <DialogClose className="absolute top-[-0.75rem] right-[-0.75rem] z-50 rounded-full bg-muted p-1.5 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
                <XIcon className="h-4 w-4 text-muted-foreground" />
                <span className="sr-only">Close</span>
              </DialogClose>
@@ -65,10 +67,16 @@ export function HeroSection() {
           macOS app that helps you stay focused with blocking, music, and more ✨
         </p>
         <div className="flex flex-col gap-4 mb-4">
-          <Button size="lg" className="px-24">
-            <AppleIcon className="mr-1 h-5 w-5" /> Download for Apple Silicon
-          </Button>
-          <Button size="lg" variant="outline" className="px-24">Mac Intel Download</Button>
+          <Link href={APPLE_SILICON_DOWNLOAD_URL}>
+            <Button size="lg" className="px-24 w-full">
+              <AppleIcon className="mr-1 h-5 w-5" /> Download for Apple Silicon
+            </Button>
+          </Link>
+          <Link href={INTEL_DOWNLOAD_URL}>
+            <Button size="lg" variant="outline" className="px-24 w-full">
+              Mac Intel Download
+            </Button>
+          </Link>
         </div>
         <p className="text-sm text-muted-foreground">
           Free version available. No credit card required.

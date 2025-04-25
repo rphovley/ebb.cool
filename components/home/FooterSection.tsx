@@ -19,7 +19,7 @@ export function FooterSection() {
            </div>
         </div>
 
-        <div className="md:col-span-2 flex flex-col md:flex-row md:justify-end gap-32">
+        <div className="md:col-span-2 flex flex-col md:flex-row md:justify-end gap-12 md:gap-32">
           <div className="space-y-3">
             <h3 className="text-sm font-semibold uppercase tracking-wider">Legal</h3>
             <nav className="flex flex-col space-y-2">
@@ -31,9 +31,9 @@ export function FooterSection() {
           <div className="space-y-3">
             <h3 className="text-sm font-semibold uppercase tracking-wider">Links</h3>
             <nav className="flex flex-col space-y-2">
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">Open Source</Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">Self Host</Link>
-              <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">Roadmap</Link>
+              <Link href="https://github.com/CodeClimbersIO/ebb-app" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Open Source</Link>
+              <Link href="https://github.com/CodeClimbersIO/ebb-app" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Self Host</Link>
+              <Link href="https://progress.ebb.cool/" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Roadmap</Link>
             </nav>
           </div>
         </div>

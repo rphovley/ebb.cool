@@ -1,9 +1,19 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
-import { Download, Twitter, Instagram } from 'lucide-react'
+import { Download } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
+import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 
 export function Header() {
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
+
+  useEffect(() => {
+    setDownloadUrl(getDownloadLink())
+  }, [])
+
   const navItems = [
     { label: "Features", href: "#features" },
     { label: "1-Star Reviews", href: "#testimonials" },
@@ -29,10 +39,12 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <Button>
-            Download
-            <Download className="ml-2 h-4 w-4" />
-          </Button>
+          <Link href={downloadUrl}>
+            <Button>
+              Download
+              <Download className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </header>
