@@ -6,6 +6,7 @@ import { TrackTimeBackground } from '../backgrounds/TrackTimeBackground'
 import { FocusProfilesBackground } from '../backgrounds/FocusProfilesBackground'
 import { BlockAppBackground } from '../backgrounds/BlockAppBackground'
 import { FriendsGlobeBackground } from '../backgrounds/FriendsGlobeBackground'
+import { PrivacyBackground } from '../backgrounds/PrivacyBackground'
 
 // Define the type for a feature including the optional background component
 interface Feature {
@@ -19,43 +20,44 @@ const features: Feature[] = [
   {
     // Icon: Clock,
     name: "Track Time",
-    description: "Understand where your time goes automatically.",
-    className: "col-span-1 row-span-3", // Bottom-left (rows 1-3 / span 2)
+    description: "Screen time on steroids",
+    className: "md:col-span-1 md:row-span-3", // Bottom-left (rows 1-3 / span 2)
     backgroundComponent: <TrackTimeBackground />,
   },
   {
-    // Icon: Ban,
+    // Icon: ShieldCheck, // Combining Lock, Zap, Database conceptually
     name: "Block Apps/Websites",
-    description: "Block distractions to stay in the zone.",
-    className: "col-span-1 row-span-4", // Top-left (rows 3-6 / span 3)
+    description: "Block distractions to stay in the zone",
+    className: "md:col-span-2 md:row-span-2", // Bottom-wide (rows 1-2 / span 1)
     backgroundComponent: <BlockAppBackground />,
   },
   {
     // Icon: Users,
     name: "Integrate Your Music",
-    description: "Sync with Spotify and Apple Music.",
-    className: "col-span-1 row-span-2", // Top-right (rows 4-6 / span 2)
+    description: "Play your favorite focus playlist",
+    className: "md:col-span-1 md:row-span-2", // Top-right (rows 4-6 / span 2)
     backgroundComponent: <MusicIntegrationBeam className="absolute top-0 left-0 right-0 h-2/3 w-full px-8" />,
   },
   {
-    // Icon: Music,
-    name: "Compete with Friends",
-    description: "Stay motivated by competing with friends (soon).",
-    className: "col-span-1 row-span-2", // Mid-right (rows 3-4 / span 1)
-    backgroundComponent: <FriendsGlobeBackground />,
+    // Icon: Ban,
+    name: "Private, Secure & Lightweight",
+    description: "Local first, open source, and built for performance.",
+    className: "md:col-span-1 md:row-span-4", // Top-left (rows 3-6 / span 3)
+    backgroundComponent: <PrivacyBackground />,
   },
   {
     // Icon: UserPlus,
     name: "Add Focus Profiles",
-    description: "Create custom profiles for different types of work.",
-    className: "col-span-1 row-span-3", // Middle tall (rows 2-6 / span 4)
+    description: "Create profiles for all types of work",
+    className: "md:col-span-1 md:row-span-3", // Middle tall (rows 2-6 / span 4)
     backgroundComponent: <FocusProfilesBackground />,
   },
   {
-    // Icon: ShieldCheck, // Combining Lock, Zap, Database conceptually
-    name: "Private, Secure & Lightweight",
-    description: "Local first, open source, and built for performance.",
-    className: "col-span-2 row-span-2", // Bottom-wide (rows 1-2 / span 1)
+    // Icon: Music,
+    name: "Compete with Friends",
+    description: "Stay motivated with friends (soon)",
+    className: "md:col-span-1 md:row-span-2", // Mid-right (rows 3-4 / span 1)
+    backgroundComponent: <FriendsGlobeBackground />,
   },
 ];
 
@@ -80,11 +82,13 @@ export function FeaturesSection() {
             </p>
           </div>
         </div>
-         <BentoGrid className="max-w-5xl mx-auto grid-cols-3 grid-rows-[repeat(6,8rem)]">
+         <BentoGrid className="max-w-5xl mx-auto grid-cols-1 md:grid-cols-3 md:grid-rows-[repeat(6,7rem)] auto-rows-auto gap-4">
           {features.map((feature) => (
             <BentoCard key={feature.name} {...feature}>
-              {/* Render the background component if it exists */}
-              {feature.backgroundComponent}
+              {/* Conditionally render background: hidden by default, block on md+ */}
+              <div className="hidden md:block">
+                {feature.backgroundComponent}
+              </div>
             </BentoCard>
           ))}
         </BentoGrid>

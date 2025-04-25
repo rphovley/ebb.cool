@@ -18,7 +18,7 @@ const Circle = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-background p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-secondary p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
     >
@@ -42,13 +42,13 @@ export function MusicIntegrationBeam({
   return (
     <div
       className={cn(
-        "relative flex w-full items-center justify-center overflow-hidden p-4",
+        "relative flex w-full max-w-[90%] items-center justify-center overflow-hidden p-4 mx-auto",
         className,
       )}
       ref={containerRef}
     >
       <div className="flex size-full flex-row items-center justify-between">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
           {/* Left Icons */}
           <Circle ref={spotifyRef} className="size-14">
             <SpotifyIcon className="h-full w-full" />

@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from 'motion/react'
 const TARGET_TEXT = 'x.com'
 const TYPING_SPEED_MS = 300
 const NOTIFICATION_DELAY_MS = 300
-const RESET_DELAY_MS = 4000
-const RESTART_DELAY_MS = 1000 // Delay before restarting typing after fade out
+const RESET_DELAY_MS = 7000
+const RESTART_DELAY_MS = 1000
 
 export function BlockAppBackground() {
   const [inputValue, setInputValue] = useState('')
@@ -62,9 +62,8 @@ export function BlockAppBackground() {
           
           resetTimeoutId.current = setTimeout(() => {
             setShowBlocked(false)
-            // Restart typing after notification fades out (controlled by AnimatePresence duration)
-            restartTimeoutId.current = setTimeout(startTyping, RESTART_DELAY_MS) 
-          }, RESET_DELAY_MS)
+            restartTimeoutId.current = setTimeout(startTyping, RESTART_DELAY_MS + 200)
+          }, RESET_DELAY_MS + 50)
         }
       }, TYPING_SPEED_MS)
     }
@@ -78,39 +77,51 @@ export function BlockAppBackground() {
   }, []) // Empty dependency array ensures this runs only on mount and unmount
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center p-4 overflow-hidden pointer-events-none select-none">
-      {/* Simple input field representation */}
-      <div className="w-full max-w-xs bg-gray-800/50 rounded-md p-3 border border-white/10 mb-4 backdrop-blur-sm">
-        <p className="text-gray-300 text-sm font-mono h-5">{inputValue}<span className={cn("animate-pulse", typingComplete ? 'invisible' : 'visible')}>█</span></p> 
-      </div>
+    <div className="absolute inset-0 flex flex-col items-center pt-14 p-4 overflow-hidden pointer-events-none select-none">
+      {/* Relative container for positioning - kept max-w-md */}
+      <div className="relative w-full max-w-md"> 
+        {/* Input field representation */} 
+        {/* Removed flex-grow, kept width */}
+        <div className="w-full bg-gray-800/50 rounded-md p-3 border border-white/10 backdrop-blur-sm"> 
+          <p className="text-gray-300 text-sm font-mono h-5">{inputValue}<span className={cn("animate-pulse", typingComplete ? 'invisible' : 'visible')}>█</span></p> 
+        </div>
 
-      {/* Blocked Notification with AnimatePresence */}
-      <AnimatePresence>
-        {showBlocked && (
-          <motion.div
-            key="blocked-notification" // Key is important for AnimatePresence
-            initial={{ opacity: 0, scale: 0.9 }} // Start hidden and slightly scaled down
-            animate={{ opacity: 1, scale: 1 }} // Animate to visible and normal scale
-            exit={{ opacity: 0, scale: 0.95 }} // Animate out by fading and scaling down slightly
-            transition={{ duration: 0.3, ease: "easeInOut" }} // Animation timing
-            className="relative w-full max-w-xs bg-gray-900/80 rounded-lg border border-white/10 shadow-xl backdrop-blur-md overflow-hidden"
-          >
-            <div className="p-4 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <XCircle size={24} className="text-red-500 flex-shrink-0" />
-                <span className="text-white font-semibold text-lg">Blocked</span>
+        {/* Blocked Notification positioned absolutely, offset overlap */}
+        <AnimatePresence>
+          {showBlocked && (
+            <motion.div
+              key="blocked-notification"
+              initial={{ opacity: 0, y: 10 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              exit={{ opacity: 0, y: 5 }} 
+              transition={{ duration: 0.2, ease: "easeOut" }} 
+              // Adjusted width
+              className="absolute top-[60%] left-[25%] w-[70%] max-w-none bg-[var(--card)] rounded-md border border-white/10 shadow-xl overflow-hidden z-10" // Changed w-[80%] to w-[70%]
+              style={{ backdropFilter: 'blur(8px)' }} // Added slight blur via inline style if needed
+            >
+              <div className="p-3 flex items-center justify-between"> {/* Adjusted padding */} 
+                <div className="flex items-center gap-2"> {/* Adjusted gap */} 
+                  <XCircle size={20} className="text-red-500 flex-shrink-0" /> {/* Adjusted size */} 
+                  <span className="text-white font-medium text-sm">Blocked</span> {/* Adjusted size/weight */} 
+                </div>
+                {/* Adjusted Snooze Button Style */}
+                <button className="bg-gray-800/70 text-gray-300 text-xs px-3 py-1 rounded-md hover:bg-gray-700/80 transition-colors">
+                  Snooze 1 min
+                </button>
               </div>
-              <button className="bg-gray-700/60 text-gray-300 text-sm px-4 py-1.5 rounded-md hover:bg-gray-600/70 transition-colors">
-                Snooze 1 min
-              </button>
-            </div>
-            {/* Progress Bar */}
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600/30">
-              <div className="h-full bg-red-500 w-3/4"></div> {/* Example progress */}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {/* Animated Progress Bar - duration exactly matches RESET_DELAY_MS */}
+              <div className="absolute bottom-0 left-0 w-full h-1 bg-red-600/30 overflow-hidden">
+                <motion.div 
+                  className="h-full bg-red-500"
+                  initial={{ width: '100%' }} 
+                  animate={{ width: '0%' }}   
+                  transition={{ duration: RESET_DELAY_MS / 1000, ease: 'linear' }} // Duration still matches RESET_DELAY_MS
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   )
 } 
