@@ -74,6 +74,13 @@ const testimonials = [
     avatar: "/images/grant.jpg",
     stars: 1,
   },
+  {
+    quote: "can't slack anymore",
+    name: "@dudufolio",
+    title: "glorified button clicker",
+    avatar: "/images/dudu.jpg",
+    stars: 1,
+  },
 ]
 
 function StarRating({ rating }: { rating: number }) {
@@ -103,9 +110,9 @@ export function TestimonialsSection() {
             </p>
           </div>
         </div>
-        <div className="mx-auto max-w-5xl columns-1 gap-6 sm:columns-2 lg:columns-3 lg:gap-8 space-y-6 lg:space-y-8">
+        <div className="mx-auto max-w-5xl columns-1 gap-4 sm:columns-2 lg:columns-3 space-y-4">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="break-inside-avoid mb-6 lg:mb-8">
+            <Card key={index} className="break-inside-avoid mb-4">
               <CardHeader className="pb-2">
                  <StarRating rating={testimonial.stars} />
               </CardHeader>
