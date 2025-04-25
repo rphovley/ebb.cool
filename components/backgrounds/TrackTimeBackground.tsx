@@ -38,6 +38,7 @@ export function TrackTimeBackground() {
     <div className="absolute inset-0 flex items-center justify-center p-4 overflow-hidden h-full w-full">
        <Marquee
          vertical
+         reverse={true}
          pauseOnHover
          className="w-full max-w-xs h-full"
          style={{
