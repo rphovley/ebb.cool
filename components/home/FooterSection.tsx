@@ -34,6 +34,7 @@ export function FooterSection() {
               <Link href="https://github.com/CodeClimbersIO/ebb-app" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Open Source</Link>
               <Link href="https://github.com/CodeClimbersIO/ebb-app" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Self Host</Link>
               <Link href="https://progress.ebb.cool/" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Roadmap</Link>
+              <Link href="https://ebb.promotekit.com/dashboard" target="_blank" className="text-sm text-muted-foreground hover:text-foreground">Affiliates</Link>
             </nav>
           </div>
         </div>
