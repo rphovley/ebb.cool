@@ -7,11 +7,13 @@ export default function AuthSuccessPage() {
     const openApp = useCallback(() => {
         const searchParams = window.location.search
         const deepLinkUrl = `ebb://auth/callback${searchParams}`
+        console.log('deepLinkUrl', deepLinkUrl)
         window.location.href = deepLinkUrl
     }, [])
 
     useEffect(() => {
         // Try to open automatically on page load
+        console.log('openApp')
         openApp()
     }, [openApp])
 
