@@ -2,6 +2,7 @@
 
 import { Metadata } from 'next'
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
@@ -10,6 +11,7 @@ import { format } from 'date-fns'
 import { Globe, Download, AlertCircle } from 'lucide-react'
 import { DiscordIcon } from '../../../components/icons/DiscordIcon'
 import WorldMap from '../../../components/community/WorldMap'
+import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 import { 
   Tooltip as UITooltip, 
   TooltipContent, 
@@ -346,7 +348,7 @@ function getCountryFlagForDisplay(countryName: string): string {
 }
 
 export default function CommunityPage() {
-  const downloadUrl = "https://github.com/CodeClimbersIO/ebb-app/releases/latest"
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
   const [hoveredCountry, setHoveredCountry] = useState<string | null>(null)
   
   // API State
@@ -370,6 +372,11 @@ export default function CommunityPage() {
   const [dailyDataError, setDailyDataError] = useState<string | null>(null)
   const [topDaysError, setTopDaysError] = useState<string | null>(null)
   
+  // Set download URL on component mount
+  useEffect(() => {
+    setDownloadUrl(getDownloadLink())
+  }, [])
+
   // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
@@ -494,10 +501,12 @@ export default function CommunityPage() {
                     
                   </div>
                   <div className="space-y-1">
-                    <Button size="lg" className="bg-violet-600 hover:bg-violet-500 text-white">
-                      <Download className="h-5 w-5 mr-2" />
-                      Download for macOS
-                    </Button>
+                    <Link href={downloadUrl}>
+                      <Button size="lg" className="bg-violet-600 hover:bg-violet-500 text-white">
+                        <Download className="h-5 w-5 mr-2" />
+                        Download for macOS
+                      </Button>
+                    </Link>
                     <div className="text-sm text-yellow-400 font-semibold">Beat the average!</div>
                   </div>
                 </>
@@ -602,10 +611,12 @@ export default function CommunityPage() {
                 Ready to boost your focus and join thousands of creators? Download Ebb and start tracking your creating time today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-violet-600 hover:bg-violet-500 text-white">
-                  <Download className="h-5 w-5 mr-2" />
-                  Download for macOS
-                </Button>
+                <Link href={downloadUrl}>
+                  <Button size="lg" className="bg-violet-600 hover:bg-violet-500 text-white">
+                    <Download className="h-5 w-5 mr-2" />
+                    Download for macOS
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline">
                   <DiscordIcon className="h-5 w-5 mr-2" />
                   Discord
