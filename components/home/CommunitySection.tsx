@@ -541,10 +541,11 @@ export function CommunitySection() {
           
           {/* Overlay title and country info */}
           <div className="absolute top-6 left-6 z-10">
-            <h3 className="text-2xl font-bold flex items-center gap-2 text-white mb-2">
+            <h3 className="text-2xl font-bold flex items-center gap-2 text-white mb-1">
               <Globe className="h-6 w-6" />
               Ebb Across the World
             </h3>
+            <span className='text-sm text-muted-foreground'>Join users from all of these countries that have used Ebb</span>
             {hoveredCountry && (
               <div className="flex items-center gap-2 text-violet-300 bg-black/50 backdrop-blur-sm rounded-lg px-3 py-2">
                 <span className="text-xl">{getCountryFlagForDisplay(hoveredCountry)}</span>
