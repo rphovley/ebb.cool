@@ -18,6 +18,7 @@ export function Header() {
     { label: "Features", href: "#features" },
     { label: "1-Star Reviews", href: "#testimonials" },
     { label: "Pricing", href: "#pricing" },
+    { label: "Community", href: "/community" },
   ]
 
   return (
