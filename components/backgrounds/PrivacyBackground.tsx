@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { cn } from '@/lib/utils'
 import { Volume2 } from 'lucide-react'
 import { motion } from 'motion/react'
 
@@ -25,7 +24,7 @@ export function PrivacyBackground() {
     }, 150)
   }
 
-  const animationEase = [0.22, 1, 0.36, 1]
+  const animationEase = [0.22, 1, 0.36, 1] as const
 
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-start p-4 overflow-hidden select-none">
