@@ -16,9 +16,9 @@ export function Header() {
 
   const navItems = [
     { label: "Features", href: "#features" },
+    { label: "Community", href: "#community" },
     { label: "1-Star Reviews", href: "#testimonials" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Community", href: "/community" },
   ]
 
   return (

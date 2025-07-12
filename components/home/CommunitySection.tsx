@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { format } from 'date-fns'
 import { Globe, Download, AlertCircle } from 'lucide-react'
-import { DiscordIcon } from '../icons/DiscordIcon'
 import WorldMap from '../community/WorldMap'
 import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 import { 
@@ -26,7 +25,7 @@ interface ApiResponse<T> {
 
 interface WeeklyActivity {
   week_start: string
-  total_hours: number
+  cumulative_hours: number
 }
 
 interface DailyActivity {
@@ -46,15 +45,15 @@ interface AverageWeeklyHoursData {
 const MARKETING_API_BASE = 'https://api.ebb.cool/api/marketing'
 
 const MARKETING_ENDPOINTS = {
-  WEEKLY_ACTIVITY: `${MARKETING_API_BASE}/weekly-activity`,
+  CUMULATIVE_WEEKLY_HOURS: `${MARKETING_API_BASE}/cumulative-weekly-hours`,
   TOTAL_HOURS: `${MARKETING_API_BASE}/total-hours`,
   AVERAGE_WEEKLY_HOURS: `${MARKETING_API_BASE}/average-weekly-hours`,
   DAILY_ACTIVITY: `${MARKETING_API_BASE}/daily-activity`,
 } as const
 
 // API Client Functions
-async function fetchWeeklyActivity(): Promise<WeeklyActivity[]> {
-  const response = await fetch(MARKETING_ENDPOINTS.WEEKLY_ACTIVITY)
+async function fetchCumulativeWeeklyHours(): Promise<WeeklyActivity[]> {
+  const response = await fetch(MARKETING_ENDPOINTS.CUMULATIVE_WEEKLY_HOURS)
   const result: ApiResponse<WeeklyActivity[]> = await response.json()
   
   if (!response.ok || !result.success) {
@@ -98,11 +97,11 @@ async function fetchDailyActivity(days: number = 90): Promise<DailyActivity[]> {
 }
 
 // Transform API data for charts
-function transformWeeklyDataForChart(data: WeeklyActivity[]) {
+function transformCumulativeWeeklyHoursForChart(data: WeeklyActivity[]) {
   const lastSixWeeks = data.slice(data.length - 6, data.length)
   return lastSixWeeks.map(item => ({
     week: format(new Date(item.week_start), 'MMM d'),
-    hours: Math.round(item.total_hours)
+    hours: Math.round(item.cumulative_hours)
   }))
 }
 
@@ -366,8 +365,8 @@ export function CommunitySection() {
       try {
         // Fetch weekly data
         setWeeklyDataLoading(true)
-        const weeklyActivityData = await fetchWeeklyActivity()
-        setWeeklyData(transformWeeklyDataForChart(weeklyActivityData))
+        const weeklyActivityData = await fetchCumulativeWeeklyHours()
+        setWeeklyData(transformCumulativeWeeklyHoursForChart(weeklyActivityData))
         setWeeklyDataError(null)
       } catch (error) {
         setWeeklyDataError(error instanceof Error ? error.message : 'Unknown error')
