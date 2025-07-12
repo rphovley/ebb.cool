@@ -15,6 +15,7 @@ import {
   TooltipProvider, 
   TooltipTrigger 
 } from '@/components/ui/tooltip'
+import { transformDailyDataToGrid } from '../../lib/activityGrid.utils'
 
 // API Types
 interface ApiResponse<T> {
@@ -203,35 +204,7 @@ function ActivityGrid({ data, loading, error }: {
     )
   }
 
-  type DayData = { date: string; hours: number; level: number }
-  const weeks: DayData[][] = []
-  let currentWeek: DayData[] = []
-  
-  data.forEach((day, index) => {
-    const dayOfWeek = new Date(day.date).getDay()
-    
-    if (index === 0) {
-      // Fill the first week with empty days if needed
-      for (let i = 0; i < dayOfWeek; i++) {
-        currentWeek.push({ date: '', hours: 0, level: 0 })
-      }
-    }
-    
-    currentWeek.push(day)
-    
-    if (currentWeek.length === 7) {
-      weeks.push(currentWeek)
-      currentWeek = []
-    }
-  })
-  
-  if (currentWeek.length > 0) {
-    // Fill the last week with empty days if needed
-    while (currentWeek.length < 7) {
-      currentWeek.push({ date: '', hours: 0, level: 0 })
-    }
-    weeks.push(currentWeek)
-  }
+  const weeks = transformDailyDataToGrid(data)
   
   const levelColors = [
     'bg-grey', // 0: none
@@ -239,10 +212,24 @@ function ActivityGrid({ data, loading, error }: {
     'bg-violet-700/60', // 2: medium
     'bg-violet-500/80', // 3: high
   ]
+
+  console.log(weeks)
+  
+  const dayLabels = ['Sun', '', '', 'Wed', '', '', 'Sat']
   
   return (
     <TooltipProvider>
-      <div className="flex gap-2 overflow-x-auto">
+      <div className="flex gap-2 overflow-x-auto pl-2">
+        {/* Day labels column */}
+        <div className="flex flex-col gap-2 mr-2">
+          {dayLabels.map((label, index) => (
+            <div key={index} className="w-6 h-4 flex items-center justify-start">
+              <span className="text-xs text-muted-foreground font-medium">{label}</span>
+            </div>
+          ))}
+        </div>
+        
+        {/* Activity grid */}
         {weeks.map((week, weekIndex) => (
           <div key={weekIndex} className="flex flex-col gap-2">
             {week.map((day, dayIndex) => (
@@ -259,6 +246,9 @@ function ActivityGrid({ data, loading, error }: {
                     sideOffset={5}
                   >
                     <div className="text-center">
+                      <div className="text-sm text-muted-foreground">
+                        {format(new Date(day.date), 'EEEE')}
+                      </div>
                       <div className="font-medium">
                         {format(new Date(day.date), 'MMM dd, yyyy')}
                       </div>
