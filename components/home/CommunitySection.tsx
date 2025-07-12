@@ -105,13 +105,20 @@ function transformCumulativeWeeklyHoursForChart(data: WeeklyActivity[]) {
   }))
 }
 
+function getActivityLevel(hours: number): number {
+  if (hours > 35) return 3      // high
+  if (hours > 15 ) return 2       // medium
+  if (hours > 0) return 1      // low
+  return 0                      // none
+}
+
 function transformDailyDataForHeatmap(data: DailyActivity[]) {
   return data.map(item => {
     const hours = item.total_minutes / 60
     return {
       date: item.date,
       hours: Math.round(hours),
-      level: hours < 15 ? 0 : hours < 25 ? 1 : hours < 35 ? 2 : 3
+      level: getActivityLevel(hours)
     }
   })
 }
@@ -227,7 +234,7 @@ function ActivityGrid({ data, loading, error }: {
   }
   
   const levelColors = [
-    'bg-gray-800', // 0: very low
+    'bg-grey', // 0: none
     'bg-violet-900/40', // 1: low
     'bg-violet-700/60', // 2: medium
     'bg-violet-500/80', // 3: high
