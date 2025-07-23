@@ -1,6 +1,12 @@
 "use client"
 import { useEffect } from "react"
 import { Header } from "@/components/layout/Header"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+    title: 'Shape the Future of Ebb',
+    description: 'We appreciate you taking a minute to help us make Ebb the best productivity app out there!',
+  }
 
 export default function ShapeEbbPage(): JSX.Element {
     useEffect(() => {
