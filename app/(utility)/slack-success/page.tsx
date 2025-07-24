@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 export default function AuthSuccessPage() {
     const openApp = useCallback(() => {
         const searchParams = window.location.search
-        const deepLinkUrl = `ebb://spotify/callback${searchParams}`
+        const deepLinkUrl = `ebb://slack/callback${searchParams}`
         console.log('deepLinkUrl', deepLinkUrl)
         window.location.href = deepLinkUrl
     }, [])
