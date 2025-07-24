@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 export default function AuthSuccessPage() {
     const openApp = useCallback(() => {
         const searchParams = window.location.search
-        const deepLinkUrl = `ebb://auth/callback${searchParams}`
+        const deepLinkUrl = `ebb://spotify/callback${searchParams}`
         console.log('deepLinkUrl', deepLinkUrl)
         window.location.href = deepLinkUrl
     }, [])
@@ -23,7 +23,7 @@ export default function AuthSuccessPage() {
         >
             <div className="flex flex-col items-center justify-center gap-4 text-center">
                 <h1 className="text-2xl font-semibold">
-                    Return to App
+                    Successfully connected to Slack Worksapce! Return to App
                 </h1>
                 <p className="text-base opacity-80">
                     Click "Open App" to finish logging in
