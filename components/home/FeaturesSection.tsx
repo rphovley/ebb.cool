@@ -46,7 +46,7 @@ const features: Feature[] = [
   },
   {
     name: "Compete with Friends",
-    description: "Stay motivated with friends (soon)",
+    description: "Stay motivated with friends",
     className: "md:col-span-1 md:row-span-2", // Mid-right (rows 3-4 / span 1)
     backgroundComponent: <FriendsGlobeBackground />,
   },
