@@ -36,11 +36,11 @@ const people = [
   },
   {
     id: 5,
-    name: "Luis",
-    designation: "Full Stack Developer",
+    name: "Chris",
+    designation: "Principal Q&A Engineer",
     image:
-      "/images/luis.jpg",
-    link: "https://x.com/luis_insights",
+      "/images/chris.jpg",
+    link: "https://x.com/Hiccup_za",
   },
   {
     id: 6,
