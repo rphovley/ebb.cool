@@ -77,7 +77,7 @@ export function HeroSection() {
             </Button>
           </Link>
         </div>
-        <div className="flex flex-col items-center justify-center gap-4 mb-4">
+        <div className="flex flex-col items-center justify-center gap-3">
           <AnimatedTooltipPreview />
           <h2 className="text-xs text-muted-foreground tracking-tighter pl-4">
           Trusted by 60+ active founders and creatives 🤝
