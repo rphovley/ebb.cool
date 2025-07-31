@@ -9,6 +9,7 @@ import { DialogClose, DialogTitle } from "@/components/ui/dialog"
 import { XIcon } from "lucide-react"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import { APPLE_SILICON_DOWNLOAD_URL, INTEL_DOWNLOAD_URL } from "@/lib/downloadUtils"
+import { AnimatedTooltipPreview } from "@/components/ui/animated-tooltip-demo"
 
 export function HeroSection() {
   return (
@@ -76,9 +77,12 @@ export function HeroSection() {
             </Button>
           </Link>
         </div>
-        <p className="text-sm text-muted-foreground">
-          Free version available. No credit card required.
-        </p>
+        <div className="flex flex-col items-center justify-center gap-4 mb-4">
+          <AnimatedTooltipPreview />
+          <h2 className="text-sm text-muted-foreground tracking-tighter pl-4">
+          Trusted by 60+ active founders and creatives 🤝
+          </h2>
+        </div>
       </div>
     </section>
   )
