@@ -76,11 +76,11 @@ const people = [
   },
   {
     id: 10,
-    name: "Juan",
-    designation: "Senior Software Engineer",
+    name: "Joschua Builds",
+    designation: "Founder & Content Creator",
     image:
-      "/images/juan.jpg",
-    link: "https://x.com/DonJuanDiablo",
+      "/images/joschua.jpg",
+    link: "https://x.com/JoschuaBuilds",
   },
 ];
 

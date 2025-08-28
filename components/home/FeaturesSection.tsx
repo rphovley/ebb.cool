@@ -27,10 +27,10 @@ const features: Feature[] = [
     backgroundComponent: <BlockAppBackground />,
   },
   {
-    name: "Integrate Your Music",
-    description: "Play your favorite focus playlist",
+    name: "Build your perfect workflow",
+    description: "Seamlessly connect Spotify and Slack",
     className: "md:col-span-1 md:row-span-2", // Top-right (rows 4-6 / span 2)
-    backgroundComponent: <MusicIntegrationBeam className="absolute top-0 left-0 right-0 h-2/3 w-full px-8" />,
+    backgroundComponent: <MusicIntegrationBeam className="absolute top-0 left-10 bottom-10 right-0 h-2/3 w-full px-10 pt-15" />,
   },
   {
     name: "Private, Secure & Lightweight",
