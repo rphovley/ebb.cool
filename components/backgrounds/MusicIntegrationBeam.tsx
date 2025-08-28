@@ -1,13 +1,14 @@
 "use client"
 
 import React, { forwardRef, useRef } from "react"
+import { motion } from "framer-motion"
 
 import { cn } from "@/lib/utils"
 import { AnimatedBeam } from "@/components/ui/animated-beam"
 
 // Use default SVG import
 import SpotifyIcon from "@/components/icons/SpotifyIcon";
-import AppleMusicIcon from "@/components/icons/AppleMusicIcon";
+import SlackIcon from "@/components/icons/SlackIcon";
 import EbbIcon from "@/components/icons/EbbIcon";
 
 const Circle = forwardRef<
@@ -15,15 +16,22 @@ const Circle = forwardRef<
   { className?: string; children?: React.ReactNode }
 >(({ className, children }, ref) => {
   return (
-    <div
+    <motion.div
       ref={ref}
       className={cn(
-        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-secondary p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
+        "z-10 flex size-12 items-center justify-center rounded-full border-2 border-border bg-secondary cursor-pointer p-3 shadow-[0_0_20px_-12px_rgba(0,0,0,0.8)]",
         className,
       )}
+      initial={{ scale: 1, x: '-50%', y: '-50%' }}
+      whileHover={{ 
+        scale: 1.15, 
+        y: '-55%',
+        zIndex: 10,
+      }}
+      transition={{ type: 'spring', stiffness: 300, damping: 15 }}
     >
       {children}
-    </div>
+    </motion.div>
   )
 })
 
@@ -54,7 +62,7 @@ export function MusicIntegrationBeam({
             <SpotifyIcon className="h-full w-full" />
           </Circle>
           <Circle ref={appleMusicRef} className="size-14">
-            <AppleMusicIcon className="h-full w-full" />
+            <SlackIcon className="h-full w-full" />
           </Circle>
         </div>
         <div className="flex flex-col justify-center">
