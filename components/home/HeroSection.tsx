@@ -80,7 +80,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center justify-center gap-3">
           <AnimatedTooltipPreview />
           <h2 className="text-xs text-muted-foreground tracking-tighter pl-4">
-          Trusted by 60+ active founders and creatives 🤝
+          Trusted by 90+ active founders and creatives 🤝
           </h2>
         </div>
       </div>
