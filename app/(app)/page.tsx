@@ -6,6 +6,7 @@ import { FAQSection } from "@/components/home/FAQSection"
 import { CTASection } from "@/components/home/CTASection"
 import { HeroSection } from "@/components/home/HeroSection"
 import { CommunitySection } from "@/components/home/CommunitySection"
+import { JoschuaTestimonial } from "@/components/home/JoschuaTestimonial"
 
 export const metadata: Metadata = {
   title: 'Ebb - macOS Focus App',
@@ -19,6 +20,7 @@ export default function Home() {
       <FeaturesSectionLoader />
       <CommunitySection />
       <TestimonialsSectionLoader />
+      <JoschuaTestimonial />
       <PricingSection />
       <FAQSection />
       <CTASection />

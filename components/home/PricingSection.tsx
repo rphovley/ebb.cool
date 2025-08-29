@@ -31,6 +31,7 @@ const proAvatars: string[] = [
   "/images/razvan.jpg",
   "/images/strw.jpg",
   "/images/samantha.jpg",
+  "/images/joschua.jpg"
 ]
 
 export function PricingSection() {
@@ -137,14 +138,14 @@ export function PricingSection() {
                   {/* Left Group: Avatars + Join Text */}
                   <div className="flex flex-col space-y-2">
                     <div className="flex -space-x-2 overflow-hidden self-start">
-                      {proAvatars.slice(0, 4).map((src: string, index: number) => (
+                      {proAvatars.slice(0, 5).map((src: string, index: number) => (
                         <Avatar key={index} className="inline-block h-8 w-8 rounded-full ring-2 ring-background">
                           <AvatarImage src={src} alt={`Pro user ${index + 1}`} />
                           <AvatarFallback>{`P${index + 1}`}</AvatarFallback>
                         </Avatar>
                       ))}
                     </div>
-                    <p className="text-sm text-muted-foreground self-start">Join thousands of pros</p>
+                    <p className="text-sm text-muted-foreground self-start">Join dozens of pros</p>
                   </div>
                    {/* Right Side: Guarantee Card */}
                    <div className="flex items-center gap-2 rounded-lg bg-card/30 p-3"> {/* Guarantee container */}
