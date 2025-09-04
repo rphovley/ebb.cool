@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { getDownloadLink } from '@/lib/downloadUtils'
 
 export default function OpenEbbApp() {
   const [isAppInstalled, setIsAppInstalled] = useState<boolean | null>(null)
@@ -20,7 +21,7 @@ export default function OpenEbbApp() {
         // If we're still on this page after 2 seconds, assume app is not installed
         setIsAppInstalled(false)
         document.body.removeChild(iframe)
-      }, 5000)
+      }, 2000)
 
       // Listen for visibility change (app opened successfully)
       const handleVisibilityChange = () => {
@@ -50,10 +51,12 @@ export default function OpenEbbApp() {
   useEffect(() => {
     // Auto-download if app is not installed
     if (isAppInstalled === false) {
-      // Replace with your actual download URL
-      window.location.href = 'https://download.ebb.cool/app'
+      // Use the smart download utility that detects Mac architecture
+      window.location.href = getDownloadLink()
     }
   }, [isAppInstalled])
+
+  const downloadUrl = getDownloadLink()
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -74,7 +77,7 @@ export default function OpenEbbApp() {
             </p>
             <div className="space-y-2">
               <Button asChild className="w-full">
-                <Link href="https://download.ebb.cool/app">
+                <Link href={downloadUrl}>
                   Download Ebb App
                 </Link>
               </Button>
