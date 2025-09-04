@@ -18,10 +18,9 @@ export default function OpenEbbApp() {
 
       // Set a timeout to check if the app opened
       const timeout = setTimeout(() => {
-        // If we're still on this page after 2 seconds, assume app is not installed
         setIsAppInstalled(false)
         document.body.removeChild(iframe)
-      }, 2000)
+      }, 10000)
 
       // Listen for visibility change (app opened successfully)
       const handleVisibilityChange = () => {
