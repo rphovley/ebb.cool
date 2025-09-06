@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Check, KeyRound, BadgeCheck } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
+import { Countdown } from '@/components/ui/countdown'
 
 const freeFeatures = [
   "Screen time analytics",
@@ -41,6 +42,9 @@ export function PricingSection() {
     setDownloadUrl(getDownloadLink())
   }, [])
 
+  // September 28th, 2024 at midnight
+  const priceChangeDate = new Date('2024-09-28T00:00:00')
+
   return (
     <section id="pricing" className="relative w-full py-12 md:py-16 lg:py-20">
       <div className="absolute inset-0 -z-10">
@@ -56,8 +60,16 @@ export function PricingSection() {
              No credit card required. Only your soul.
             </p>
           </div>
-          {/* Optional: Add Learn More button if needed */}
+          
+          {/* Countdown Component */}
+          <div className="pt-4">
+            <Countdown 
+              targetDate={priceChangeDate} 
+              variant="pricing"
+            />
+          </div>
         </div>
+        
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 items-start">
           {/* Free Tier Card - Updated */}
           <Card> {/* Uses default border */}
@@ -97,7 +109,14 @@ export function PricingSection() {
 
           {/* Paid Tier Card - Updated */}
           <div className="flex flex-col items-start">
-            <Card className="w-full">
+            <Card className="w-full relative">
+              {/* Fixed Limited Time Badge positioning */}
+              <div className="absolute -right-8 -top-3 z-10">
+                <div className="text-sm text-yellow-400 font-semibold rotate-12 bg-background/80 px-2 py-1 rounded border border-yellow-400/20 shadow-sm">
+                  Limited Time Pricing
+                </div>
+              </div>
+              
               <CardHeader className="pt-4 pb-6">
                 {/* Ebb Pro Badge - Updated style */}
                 <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-yellow-400/10 px-3 py-1 text-sm font-medium text-yellow-400 mb-4 gap-1">
