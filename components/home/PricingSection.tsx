@@ -42,8 +42,8 @@ export function PricingSection() {
     setDownloadUrl(getDownloadLink())
   }, [])
 
-  // September 28th, 2024 at midnight
-  const priceChangeDate = new Date('2024-09-28T00:00:00')
+  // October 19th, 2025 at 22:00 CET (20:00 UTC)
+  const priceChangeDate = new Date('2025-10-19T20:00:00Z')
 
   return (
     <section id="pricing" className="relative w-full py-12 md:py-16 lg:py-20">

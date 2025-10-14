@@ -81,6 +81,20 @@ const testimonials = [
     avatar: "/images/dudu.jpg",
     stars: 1,
   },
+  {
+    quote: "💪 deleted the premium version after testing it out for 1 day\nhate it",
+    name: "@JoschuaBuilds",
+    title: "verified user who actually paid for the premium version",
+    avatar: "/images/joschua.jpg",
+    stars: 1,
+  },
+  {
+    quote: "🙏 and I mean it!\nI am currently living off savings so why would have I bought it :/",
+    name: "@JoschuaBuilds",
+    title: "verified user who actually paid for the premium version",
+    avatar: "/images/joschua.jpg",
+    stars: 1,
+  },
 ]
 
 function StarRating({ rating }: { rating: number }) {
@@ -117,7 +131,7 @@ export function TestimonialsSection() {
                  <StarRating rating={testimonial.stars} />
               </CardHeader>
               <CardContent className="pt-0">
-                <blockquote className="text-base text-foreground/90 pt-4">
+                <blockquote className="text-base text-foreground/90 pt-4 whitespace-pre-line">
                   {testimonial.quote}
                 </blockquote>
               </CardContent>
