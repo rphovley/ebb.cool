@@ -22,7 +22,7 @@ export function Header() {
     { label: "Pricing", href: "#pricing" },
   ]
 
-  const priceChangeDate = new Date('2025-10-19T20:00:00Z')
+  const priceChangeDate = new Date('2025-10-23T20:00:00Z')
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">

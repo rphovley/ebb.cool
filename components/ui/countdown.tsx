@@ -65,7 +65,7 @@ export function Countdown({ targetDate, className, variant = 'navbar' }: Countdo
     return null
   }
 
-  if (variant === 'navbar') {   
+  if (variant === 'navbar') {
     return (
       <div className={cn(
         "bg-card/20 backdrop-blur-lg rounded-xl border shadow-sm flex items-center gap-3 px-3 py-3",
@@ -94,4 +94,40 @@ export function Countdown({ targetDate, className, variant = 'navbar' }: Countdo
       </div>
     )
   }
+
+  // Pricing variant
+  return (
+    <div className={cn(
+      "bg-card/30 backdrop-blur-lg rounded-xl border shadow-sm px-6 py-4",
+      className
+    )}>
+      <div className="flex flex-col items-center gap-2">
+        <div className="flex items-center gap-1">
+          <Clock className="h-4 w-4 text-yellow-400" />
+          <span className="text-sm font-medium text-yellow-400">Limited Time Offer</span>
+        </div>
+        <div className="flex items-center gap-2 font-mono text-lg">
+          <div className="flex flex-col items-center px-3 py-2 bg-background/50 rounded-lg">
+            <span className="text-2xl font-bold text-foreground">{timeLeft.days}</span>
+            <span className="text-xs text-muted-foreground uppercase">Days</span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center px-3 py-2 bg-background/50 rounded-lg">
+            <span className="text-2xl font-bold text-foreground">{timeLeft.hours.toString().padStart(2, '0')}</span>
+            <span className="text-xs text-muted-foreground uppercase">Hours</span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center px-3 py-2 bg-background/50 rounded-lg">
+            <span className="text-2xl font-bold text-foreground">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+            <span className="text-xs text-muted-foreground uppercase">Mins</span>
+          </div>
+          <span className="text-muted-foreground">:</span>
+          <div className="flex flex-col items-center px-3 py-2 bg-background/50 rounded-lg">
+            <span className="text-2xl font-bold text-foreground">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+            <span className="text-xs text-muted-foreground uppercase">Secs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
