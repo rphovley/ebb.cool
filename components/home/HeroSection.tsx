@@ -59,11 +59,14 @@ export function HeroSection() {
           </DialogContent>
         </Dialog>
 
-        <h1 className="text-5xl font-bold tracking-tighter mb-4">
+        <h1 className="text-5xl font-bold tracking-tighter mb-2">
           Focus never felt so good.
         </h1>
+        <p className="text-xl text-foreground/80 mb-6 font-semibold">
+          The Strava for creatives and builders
+        </p>
         <p className="max-w-sm text-md text-muted-foreground mb-8">
-          macOS app that helps you stay focused with blocking, music, and more ✨
+          Block distractions, play focus music, and track deep work sessions
         </p>
         <div className="flex flex-col gap-4 mb-4">
           <Link href={APPLE_SILICON_DOWNLOAD_URL}>
