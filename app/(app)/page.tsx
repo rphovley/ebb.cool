@@ -6,6 +6,7 @@ import { CTASection } from "@/components/home/CTASection"
 import { HeroSection } from "@/components/home/HeroSection"
 import { FeaturesSection } from "@/components/home/FeaturesSection"
 import { CommunitySection } from "@/components/home/CommunitySection"
+import { CalendarWidget } from "@/components/ui/calendar-widget"
 
 export const metadata: Metadata = {
   title: 'Ebb - macOS Focus App',
@@ -22,6 +23,7 @@ export default function Home() {
       <PricingSection />
       <FAQSection />
       <CTASection />
+      <CalendarWidget />
     </main>
   )
 }
