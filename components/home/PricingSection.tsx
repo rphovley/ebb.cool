@@ -78,7 +78,7 @@ export function PricingSection() {
             {/* Disabled Overlay */}
             <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-20 rounded-lg flex items-center justify-center">
               <div className="bg-background/95 border-2 border-primary px-6 py-3 rounded-lg shadow-lg">
-                <p className="text-lg font-semibold text-foreground">Coming Soon</p>
+                <p className="text-lg font-semibold text-foreground">Coming Soon...</p>
               </div>
             </div>
 
