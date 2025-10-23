@@ -4,28 +4,28 @@ import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Check, KeyRound, BadgeCheck } from "lucide-react"
+import { Check, KeyRound, BadgeCheck, Layers, Shield, Calendar, MessageSquare, Eye, BarChart3 } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 import { Countdown } from '@/components/ui/countdown'
 
 const paidFeatures = [
-  "Hands-Free Time Tracking",
-  "Site and App Blocking",
-  "Slack & Spotify Integration",
-  "Schedule Focus Sessions",
-  "DoomScroll Detention",
-  "Multiple Focus Profiles",
+  { icon: BarChart3, text: "Hands-Free Time Tracking" },
+  { icon: Shield, text: "Site and App Blocking" },
+  { icon: MessageSquare, text: "Slack & Spotify Integration" },
+  { icon: Calendar, text: "Schedule Focus Sessions" },
+  { icon: Eye, text: "DoomScroll Detention" },
+  { icon: Layers, text: "Multiple Focus Profiles" },
 ]
 
 const lifetimeFeatures = [
-  "Hands-Free Time Tracking",
-  "Site and App Blocking",
-  "Slack & Spotify Integration",
-  "Schedule Focus Sessions",
-  "DoomScroll Detention",
-  "Multiple Focus Profiles",
-  "Early Access to New Features",
+  { icon: BarChart3, text: "Hands-Free Time Tracking" },
+  { icon: Shield, text: "Site and App Blocking" },
+  { icon: MessageSquare, text: "Slack & Spotify Integration" },
+  { icon: Calendar, text: "Schedule Focus Sessions" },
+  { icon: Eye, text: "DoomScroll Detention" },
+  { icon: Layers, text: "Multiple Focus Profiles" },
+  { icon: KeyRound, text: "Early Access to New Features" },
 ]
 
 const proAvatars: string[] = [
@@ -34,6 +34,14 @@ const proAvatars: string[] = [
   "/images/strw.jpg",
   "/images/samantha.jpg",
   "/images/joschua.jpg"
+]
+
+const lifetimeAvatars: string[] = [
+  "/images/nathan.jpg",
+  "/images/paul.jpg",
+  "/images/tanner.jpg",
+  "/images/jesco.jpg",
+  "/images/chris.jpg"
 ]
 
 export function PricingSection() {
@@ -64,24 +72,17 @@ export function PricingSection() {
           </div>
 
           {/* Countdown Component */}
-          <div className="pt-4">
+          {/* <div className="pt-4">
             <Countdown
               targetDate={priceChangeDate}
               variant="pricing"
             />
-          </div>
+          </div> */}
         </div>
 
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 items-start">
           {/* Subscription Card with Toggle */}
-          <Card className="relative opacity-60">
-            {/* Disabled Overlay */}
-            <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px] z-20 rounded-lg flex items-center justify-center">
-              <div className="bg-background/95 border-2 border-primary px-6 py-3 rounded-lg shadow-lg">
-                <p className="text-lg font-semibold text-foreground">Coming Soon...</p>
-              </div>
-            </div>
-
+          <Card className="relative">
             <CardHeader className="pt-4 pb-6">
               {/* Ebb Pro Badge */}
               <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-yellow-400/10 px-3 py-1 text-sm font-medium text-yellow-400 mb-4 gap-1">
@@ -95,7 +96,7 @@ export function PricingSection() {
                   Monthly
                 </span>
                 <button
-                  disabled
+                  onClick={() => setIsAnnual(!isAnnual)}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                     isAnnual ? 'bg-primary' : 'bg-muted'
                   }`}
@@ -110,7 +111,6 @@ export function PricingSection() {
                   Annual
                 </span>
               </div>
-
               {/* Price Display */}
               <div className="flex flex-col items-center justify-center text-center mb-6">
                 <div className="flex items-baseline gap-2">
@@ -122,8 +122,8 @@ export function PricingSection() {
                 )}
               </div>
 
-              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" disabled>
-                Start 14-Day Free Trial
+              <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                Get Started
               </Button>
               <p className="text-xs text-center text-muted-foreground mt-3 w-full">
                 No credit card required
@@ -133,25 +133,36 @@ export function PricingSection() {
             <CardContent className="flex flex-col items-start space-y-6 pt-2">
               {/* Feature List */}
               <ul className="grid grid-cols-2 gap-x-8 gap-y-2 w-full px-0 md:px-0">
-                {paidFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
+                {paidFeatures.map((feature, index) => {
+                  const Icon = feature.icon
+                  return (
+                    <li key={index} className="flex items-center gap-2">
+                      <Icon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm">{feature.text}</span>
+                    </li>
+                  )
+                })}
               </ul>
+
+              {/* Social Proof */}
+              <div className="flex items-center justify-center w-full pt-4">
+                <div className="flex flex-col space-y-2 items-center">
+                  <div className="flex -space-x-2 overflow-hidden">
+                    {proAvatars.slice(0, 5).map((src: string, index: number) => (
+                      <Avatar key={index} className="inline-block h-8 w-8 rounded-full ring-2 ring-background">
+                        <AvatarImage src={src} alt={`Pro user ${index + 1}`} />
+                        <AvatarFallback>{`P${index + 1}`}</AvatarFallback>
+                      </Avatar>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground">Join dozens of pros</p>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
           {/* Lifetime Card */}
           <Card className="relative border-2 border-primary">
-            {/* 75% OFF Badge */}
-            <div className="absolute -right-8 -top-3 z-10">
-              <div className="text-sm text-yellow-400 font-semibold rotate-12 bg-background/80 px-3 py-1.5 rounded border border-yellow-400/20 shadow-sm">
-                75% OFF
-              </div>
-            </div>
-
             <CardHeader className="pt-4 pb-6">
               {/* Lifetime Badge */}
               <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4 gap-1">
@@ -160,15 +171,9 @@ export function PricingSection() {
               </div>
 
               {/* Price Display */}
-              <div className="flex flex-col items-center justify-center text-center mb-6 pt-10">
-                {/* Original Price Strikethrough */}
-                <div className="flex flex-col items-center gap-1 mb-1">
-                  <span className="text-xs text-muted-foreground uppercase tracking-wide">Regular Price</span>
-                  <span className="text-2xl text-muted-foreground line-through">$149</span>
-                </div>
-                {/* Discounted Price */}
+              <div className="flex flex-col items-center justify-center text-center mb-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold">$37</span>
+                  <span className="text-5xl font-bold">$149</span>
                   <span className="text-xl text-muted-foreground">one-time</span>
                 </div>
                 <CardDescription className="mt-2">Pay once, own it forever</CardDescription>
@@ -176,7 +181,7 @@ export function PricingSection() {
 
               <Link href={downloadUrl}>
                 <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Buy Lifetime
+                  Get Started
                 </Button>
               </Link>
             </CardHeader>
@@ -184,39 +189,43 @@ export function PricingSection() {
             <CardContent className="flex flex-col items-start space-y-6 pt-2">
               {/* Feature List */}
               <ul className="grid grid-cols-2 gap-x-8 gap-y-2 w-full px-0 md:px-0">
-                {lifetimeFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2">
-                    <Check className="h-4 w-4 text-primary flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
+                {lifetimeFeatures.map((feature, index) => {
+                  const Icon = feature.icon
+                  return (
+                    <li key={index} className="flex items-center gap-2">
+                      <Icon className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span className="text-sm">{feature.text}</span>
+                    </li>
+                  )
+                })}
               </ul>
 
-              {/* Social Proof & Guarantee Row */}
-              <div className="flex items-center justify-between w-full pt-4 gap-4">
-                {/* Left: Social Proof */}
-                <div className="flex flex-col space-y-2">
-                  <div className="flex -space-x-2 overflow-hidden self-start">
-                    {proAvatars.slice(0, 5).map((src: string, index: number) => (
+              {/* Social Proof */}
+              <div className="flex items-center justify-center w-full pt-4">
+                <div className="flex flex-col space-y-2 items-center">
+                  <div className="flex -space-x-2 overflow-hidden">
+                    {lifetimeAvatars.map((src: string, index: number) => (
                       <Avatar key={index} className="inline-block h-8 w-8 rounded-full ring-2 ring-background">
-                        <AvatarImage src={src} alt={`Pro user ${index + 1}`} />
-                        <AvatarFallback>{`P${index + 1}`}</AvatarFallback>
+                        <AvatarImage src={src} alt={`Lifetime user ${index + 1}`} />
+                        <AvatarFallback>{`L${index + 1}`}</AvatarFallback>
                       </Avatar>
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground self-start">Join dozens of pros</p>
-                </div>
-
-                {/* Right: Guarantee */}
-                <div className="flex items-center gap-2 rounded-lg bg-card/30 p-3">
-                  <BadgeCheck className="h-6 w-6 text-blue-400 flex-shrink-0" />
-                  <p className="text-sm text-muted-foreground leading-tight">
-                    30-day money<br />back guarantee
-                  </p>
+                  <p className="text-sm text-muted-foreground">Join dozens with lifetime access *</p>
                 </div>
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Money Back Guarantee Badge */}
+        <div className="flex justify-center w-full mt-8">
+          <div className="flex items-center gap-2 rounded-lg bg-card/30 px-4 py-3 border border-border/40">
+            <BadgeCheck className="h-6 w-6 text-blue-400 flex-shrink-0" />
+            <p className="text-sm text-muted-foreground">
+              30-day money back guarantee
+            </p>
+          </div>
         </div>
       </div>
     </section>
