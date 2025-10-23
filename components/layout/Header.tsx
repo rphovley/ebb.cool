@@ -29,14 +29,14 @@ export function Header() {
       <div className="mx-auto flex h-20 max-w-[1140px] items-center justify-between px-4 md:px-6 lg:px-8">
         <div className="mr-4 flex items-start gap-10">
           <Logo width={36} height={36} />
-          <div className="block">
+          {/* <div className="block">
             <Link href="#pricing">
-            <Countdown 
-                targetDate={priceChangeDate} 
+            <Countdown
+                targetDate={priceChangeDate}
                 variant="navbar"
               />
             </Link>
-          </div>
+          </div> */}
         </div>
         
         <div className="flex items-center space-x-6">
