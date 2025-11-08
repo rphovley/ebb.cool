@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Target, Calendar, Shield, TrendingUp, Trophy } from 'lucide-react'
+import { DEFAULT_DOWNLOAD_URL, getDownloadLink } from '@/lib/downloadUtils'
 
 interface Step {
   number: string
@@ -16,51 +17,52 @@ interface Step {
   }[]
 }
 
+
 const steps: Step[] = [
   {
     number: "01",
-    title: "Setup Your Goals with Tides",
-    description: "Define your daily or weekly commitments. Tides are your commitment to focused work—set targets that align with your goals.",
+    title: "Set Your Goals with Tides",
+    description: "Stop feeling overwhelmed. Set achievable daily or weekly targets that match your actual capacity—and finally stick to them.",
     icon: <Target className="h-6 w-6" />,
     media: [{
       type: 'video',
-      src: '/ebb-steps-web/tides.mov',
+      src: 'https://demoairbnbbucket.s3.us-east-2.amazonaws.com/ebb-steps-web/tides.mov',
     }]
   },
   {
     number: "02",
     title: "Schedule Focus Sessions",
-    description: "Plan ahead and make the most of your productive hours. Schedule sessions to align with your energy levels and commitments.",
+    description: "Work when you're at your best. Plan sessions around your peak energy hours so every minute of focus actually counts.",
     icon: <Calendar className="h-6 w-6" />,
     media: [{
       type: 'video',
-      src: '/ebb-steps-web/schedule-demo.mov',
+      src: 'https://demoairbnbbucket.s3.us-east-2.amazonaws.com/ebb-steps-web/schedule-demo.mov',
     }]
   },
   {
     number: "03",
-    title: "Start Focus & Block Distractions",
-    description: "Jump automatically from a scheduled session or start a focus session whenever it's convenient. Block distracting apps and websites to stay in the zone.",
+    title: "Enter Focus & Block Distractions",
+    description: "One click to enter deep work. Distracting apps and websites are blocked automatically—no willpower required.",
     icon: <Shield className="h-6 w-6" />,
     media: [
       {
         type: 'video',
-        src: '/ebb-steps-web/start-focus.mov',
+        src: 'https://demoairbnbbucket.s3.us-east-2.amazonaws.com/ebb-steps-web/start-focus.mov',
       },
       {
         type: 'image',
-        src: '/ebb-steps-web/block-example.png',
+        src: 'https://demoairbnbbucket.s3.us-east-2.amazonaws.com/ebb-steps-web/block-example.png',
       }
     ]
   },
   {
     number: "04",
-    title: "Track Your Time & Progress",
-    description: "Like screen time on steroids. See exactly where your time goes and monitor your productivity patterns.",
+    title: "Track Your Progress",
+    description: "See exactly where your time goes. Screen time insights on steroids—understand your patterns and celebrate real wins.",
     icon: <TrendingUp className="h-6 w-6" />,
     media: [{
       type: 'video',
-      src: '/ebb-steps-web/track-time.mov',
+      src: 'https://demoairbnbbucket.s3.us-east-2.amazonaws.com/ebb-steps-web/track-productivity.mov',
     }]
   },
 ]
@@ -68,6 +70,11 @@ const steps: Step[] = [
 export function StepsSection() {
   const [activeStep, setActiveStep] = useState(0)
   const [activeMediaIndex, setActiveMediaIndex] = useState(0)
+  const [downloadUrl, setDownloadUrl] = useState(DEFAULT_DOWNLOAD_URL)
+
+  useEffect(() => {
+    setDownloadUrl(getDownloadLink())
+  }, [])
 
   return (
     <section className="w-full py-20 md:py-32 px-4 md:px-6 bg-gradient-to-b from-background to-muted/20">
@@ -75,10 +82,10 @@ export function StepsSection() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Four Steps to Achieve Your Goals
+            From Distracted to Focused in 4 Steps
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Set goals, stay focused, and build lasting habits that drive real progress
+            Turn your goals into reality with a simple system that blocks distractions and builds lasting focus habits
           </p>
         </div>
 
@@ -133,7 +140,7 @@ export function StepsSection() {
                 {activeStep === index && (
                   <motion.div
                     layoutId="activeIndicator"
-                    className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 h-29   w-1 bg-primary rounded-full"
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   />
                 )}
@@ -197,6 +204,24 @@ export function StepsSection() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex flex-col items-center gap-4">
+            <p className="text-muted-foreground">
+              Ready to transform your productivity?
+            </p>
+            <a
+              href={downloadUrl}
+              className="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+            >
+              Start Your First Focus Session
+            </a>
+            <p className="text-sm text-muted-foreground">
+              Free download • No credit card required "Only your Soul"
+            </p>
           </div>
         </div>
       </div>

@@ -65,9 +65,9 @@ export function PricingSection() {
       <div className="container px-4 md:px-6 max-w-[1080px] mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Choose Your Plan</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Simple pricing</h2>
             <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-             Simple pricing. Start today.
+             Start today.
             </p>
           </div>
 
@@ -80,9 +80,10 @@ export function PricingSection() {
           </div> */}
         </div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8 items-start">
+        <div className="mx-auto flex justify-center max-w-[480px] px-4">
+          {/* Note: Layout changed to single centered card. Restore grid with sm:grid-cols-2 when showing multiple pricing options */}
           {/* Subscription Card with Toggle */}
-          <Card className="relative">
+          <Card className="relative w-full max-w-[480px]">
             <CardHeader className="pt-4 pb-6">
               {/* Ebb Pro Badge */}
               <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-yellow-400/10 px-3 py-1 text-sm font-medium text-yellow-400 mb-4 gap-1">
@@ -161,34 +162,34 @@ export function PricingSection() {
             </CardContent>
           </Card>
 
-          {/* Lifetime Card */}
-          <Card className="relative border-2 border-primary">
+{/* Lifetime Card - HIDDEN */}
+          {/* <Card className="relative border-2 border-primary">
             <CardHeader className="pt-4 pb-6">
               {/* Lifetime Badge */}
-              <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4 gap-1">
+              {/* <div className="inline-flex self-start items-center max-w-fit rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary mb-4 gap-1">
                 <KeyRound className="h-4 w-4" />
                 <span>Lifetime Access</span>
-              </div>
+              </div> */}
 
               {/* Price Display */}
-              <div className="flex flex-col items-center justify-center text-center mb-6">
+              {/* <div className="flex flex-col items-center justify-center text-center mb-6">
                 <div className="flex items-baseline gap-2">
                   <span className="text-5xl font-bold">$149</span>
                   <span className="text-xl text-muted-foreground">one-time</span>
                 </div>
                 <CardDescription className="mt-2">Pay once, own it forever</CardDescription>
-              </div>
+              </div> */}
 
-              <Link href={downloadUrl}>
+              {/* <Link href={downloadUrl}>
                 <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                   Get Started
                 </Button>
               </Link>
-            </CardHeader>
+            </CardHeader> */}
 
-            <CardContent className="flex flex-col items-start space-y-6 pt-2">
+            {/* <CardContent className="flex flex-col items-start space-y-6 pt-2"> */}
               {/* Feature List */}
-              <ul className="grid grid-cols-2 gap-x-8 gap-y-2 w-full px-0 md:px-0">
+              {/* <ul className="grid grid-cols-2 gap-x-8 gap-y-2 w-full px-0 md:px-0">
                 {lifetimeFeatures.map((feature, index) => {
                   const Icon = feature.icon
                   return (
@@ -198,10 +199,10 @@ export function PricingSection() {
                     </li>
                   )
                 })}
-              </ul>
+              </ul> */}
 
               {/* Social Proof */}
-              <div className="flex items-center justify-center w-full pt-4">
+              {/* <div className="flex items-center justify-center w-full pt-4">
                 <div className="flex flex-col space-y-2 items-center">
                   <div className="flex -space-x-2 overflow-hidden">
                     {lifetimeAvatars.map((src: string, index: number) => (
@@ -215,7 +216,7 @@ export function PricingSection() {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </Card> */}
         </div>
 
         {/* Money Back Guarantee Badge */}
