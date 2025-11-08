@@ -7,6 +7,7 @@ import { HeroSection } from "@/components/home/HeroSection"
 import { FeaturesSection } from "@/components/home/FeaturesSection"
 import { CommunitySection } from "@/components/home/CommunitySection"
 import { CalendarWidget } from "@/components/ui/calendar-widget"
+import { StepsSection } from "@/components/home/StepsSection"
 
 export const metadata: Metadata = {
   title: 'Ebb - macOS Focus App',
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center overflow-x-hidden">
       <HeroSection />
+      <StepsSection />
       <FeaturesSection />
       <CommunitySection />
       <TestimonialsSectionLoader />
